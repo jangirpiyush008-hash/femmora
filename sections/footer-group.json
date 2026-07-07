@@ -4,7 +4,12 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "shop_heading": "Shop",
+        "shop_menu": "footer-shop",
+        "help_heading": "Help",
+        "help_menu": "footer-help"
+      }
     }
   },
   "order": ["footer"]
