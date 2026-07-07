@@ -185,7 +185,7 @@
     "featured": {
       "type": "featured-collection",
       "settings": {
-        "heading": "Featured Products",
+        "heading": "Featured products",
         "products_to_show": 4,
         "view_all_label": "View all"
       }
