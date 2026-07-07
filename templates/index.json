@@ -25,7 +25,7 @@
             "heading": "Comfort meets style",
             "subtext": "Feeding-friendly kurtis, dresses and nursing bras designed for real life.",
             "button_label": "Shop Mom",
-            "link": "shopify://collections/mom",
+            "link": "/collections/mom",
             "align": "center",
             "overlay": 25
           }
@@ -37,7 +37,7 @@
             "heading": "Silver jewellery",
             "subtext": "Everyday elegance that pairs with everything you own.",
             "button_label": "Shop Jewellery",
-            "link": "shopify://collections/jewellery",
+            "link": "/collections/jewellery",
             "align": "center",
             "overlay": 25
           }
@@ -61,7 +61,7 @@
             "title": "Mom",
             "text": "Maternity dresses, feeding wear and nursing bras designed for comfort.",
             "button_label": "Shop Mom",
-            "link": "shopify://collections/mom",
+            "link": "/collections/mom",
             "accent": "sage"
           }
         },
@@ -71,7 +71,7 @@
             "title": "Women",
             "text": "Kurtis and kurta sets — elegant ethnic wear for every day.",
             "button_label": "Shop Women",
-            "link": "shopify://collections/women",
+            "link": "/collections/women",
             "accent": "brand"
           }
         },
@@ -81,7 +81,7 @@
             "title": "Jewellery",
             "text": "Silver earrings, necklaces, bangles and rings that go with everything.",
             "button_label": "Shop Jewellery",
-            "link": "shopify://collections/jewellery",
+            "link": "/collections/jewellery",
             "accent": "gold"
           }
         }
@@ -101,71 +101,71 @@
         "c1": {
           "type": "tile",
           "settings": {
-            "collection": "maternity-dresses",
-            "label": "Maternity Dresses"
+            "label": "Maternity Dresses",
+            "link": "/collections/maternity-dresses"
           }
         },
         "c2": {
           "type": "tile",
           "settings": {
-            "collection": "feeding-dresses",
-            "label": "Feeding Dresses"
+            "label": "Feeding Dresses",
+            "link": "/collections/feeding-dresses"
           }
         },
         "c3": {
           "type": "tile",
           "settings": {
-            "collection": "nursing-bras",
-            "label": "Nursing Bras"
+            "label": "Nursing Bras",
+            "link": "/collections/nursing-bras"
           }
         },
         "c4": {
           "type": "tile",
           "settings": {
-            "collection": "maternity-nightwear",
-            "label": "Maternity Nightwear"
+            "label": "Maternity Nightwear",
+            "link": "/collections/maternity-nightwear"
           }
         },
         "c5": {
           "type": "tile",
           "settings": {
-            "collection": "kurtis",
-            "label": "Kurtis"
+            "label": "Kurtis",
+            "link": "/collections/kurtis"
           }
         },
         "c6": {
           "type": "tile",
           "settings": {
-            "collection": "kurta-sets",
-            "label": "Kurta Sets"
+            "label": "Kurta Sets",
+            "link": "/collections/kurta-sets"
           }
         },
         "c7": {
           "type": "tile",
           "settings": {
-            "collection": "earrings",
-            "label": "Earrings"
+            "label": "Earrings",
+            "link": "/collections/earrings"
           }
         },
         "c8": {
           "type": "tile",
           "settings": {
-            "collection": "necklaces",
-            "label": "Necklaces"
+            "label": "Necklaces",
+            "link": "/collections/necklaces"
           }
         },
         "c9": {
           "type": "tile",
           "settings": {
-            "collection": "bangles",
-            "label": "Bangles"
+            "label": "Bangles",
+            "link": "/collections/bangles"
           }
         },
         "c10": {
           "type": "tile",
           "settings": {
-            "collection": "rings",
-            "label": "Rings"
+            "label": "Rings",
+            "link": "/collections/rings"
           }
         }
       },
