@@ -2,66 +2,286 @@
   "sections": {
     "slideshow": {
       "type": "slideshow",
-      "settings": { "autoplay": true, "interval": 5 },
-      "blocks": {
-        "s1": { "type": "slide", "settings": { "eyebrow": "Femorra", "heading": "New arrivals", "subtext": "Maternity & feeding wear, ethnic kurtis and silver jewellery — made for you.", "button_label": "Shop now", "align": "center", "overlay": 25 } },
-        "s2": { "type": "slide", "settings": { "eyebrow": "For every mom", "heading": "Comfort meets style", "subtext": "Feeding-friendly kurtis, dresses and nursing bras designed for real life.", "button_label": "Shop Mom", "link": "shopify://collections/mom", "align": "center", "overlay": 25 } },
-        "s3": { "type": "slide", "settings": { "eyebrow": "Finishing touch", "heading": "Silver jewellery", "subtext": "Everyday elegance that pairs with everything you own.", "button_label": "Shop Jewellery", "link": "shopify://collections/jewellery", "align": "center", "overlay": 25 } }
+      "settings": {
+        "autoplay": true,
+        "interval": 5
       },
-      "block_order": ["s1", "s2", "s3"]
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Femorra",
+            "heading": "New arrivals",
+            "subtext": "Maternity & feeding wear, ethnic kurtis and silver jewellery — made for you.",
+            "button_label": "Shop now",
+            "align": "center",
+            "overlay": 25
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "For every mom",
+            "heading": "Comfort meets style",
+            "subtext": "Feeding-friendly kurtis, dresses and nursing bras designed for real life.",
+            "button_label": "Shop Mom",
+            "link": "shopify://collections/mom",
+            "align": "center",
+            "overlay": 25
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Finishing touch",
+            "heading": "Silver jewellery",
+            "subtext": "Everyday elegance that pairs with everything you own.",
+            "button_label": "Shop Jewellery",
+            "link": "shopify://collections/jewellery",
+            "align": "center",
+            "overlay": 25
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
     },
     "worlds": {
       "type": "three-worlds",
-      "settings": { "heading": "Shop by category" },
-      "blocks": {
-        "mom": { "type": "world", "settings": { "title": "Mom", "text": "Maternity dresses, feeding wear and nursing bras designed for comfort.", "button_label": "Shop Mom", "link": "shopify://collections/mom", "accent": "sage" } },
-        "women": { "type": "world", "settings": { "title": "Women", "text": "Kurtis and kurta sets — elegant ethnic wear for every day.", "button_label": "Shop Women", "link": "shopify://collections/women", "accent": "brand" } },
-        "jewel": { "type": "world", "settings": { "title": "Jewellery", "text": "Silver earrings, necklaces, bangles and rings that go with everything.", "button_label": "Shop Jewellery", "link": "shopify://collections/jewellery", "accent": "gold" } }
+      "settings": {
+        "heading": "Shop by category"
       },
-      "block_order": ["mom", "women", "jewel"]
+      "blocks": {
+        "mom": {
+          "type": "world",
+          "settings": {
+            "title": "Mom",
+            "text": "Maternity dresses, feeding wear and nursing bras designed for comfort.",
+            "button_label": "Shop Mom",
+            "link": "shopify://collections/mom",
+            "accent": "sage"
+          }
+        },
+        "women": {
+          "type": "world",
+          "settings": {
+            "title": "Women",
+            "text": "Kurtis and kurta sets — elegant ethnic wear for every day.",
+            "button_label": "Shop Women",
+            "link": "shopify://collections/women",
+            "accent": "brand"
+          }
+        },
+        "jewel": {
+          "type": "world",
+          "settings": {
+            "title": "Jewellery",
+            "text": "Silver earrings, necklaces, bangles and rings that go with everything.",
+            "button_label": "Shop Jewellery",
+            "link": "shopify://collections/jewellery",
+            "accent": "gold"
+          }
+        }
+      },
+      "block_order": [
+        "mom",
+        "women",
+        "jewel"
+      ]
     },
     "subcats": {
       "type": "category-grid",
-      "settings": { "heading": "Browse all categories" },
-      "blocks": {
-        "c1": { "type": "tile", "settings": { "collection": "maternity-dresses", "label": "Maternity Dresses" } },
-        "c2": { "type": "tile", "settings": { "collection": "feeding-dresses", "label": "Feeding Dresses" } },
-        "c3": { "type": "tile", "settings": { "collection": "nursing-bras", "label": "Nursing Bras" } },
-        "c4": { "type": "tile", "settings": { "collection": "maternity-nightwear", "label": "Maternity Nightwear" } },
-        "c5": { "type": "tile", "settings": { "collection": "kurtis", "label": "Kurtis" } },
-        "c6": { "type": "tile", "settings": { "collection": "kurta-sets", "label": "Kurta Sets" } },
-        "c7": { "type": "tile", "settings": { "collection": "earrings", "label": "Earrings" } },
-        "c8": { "type": "tile", "settings": { "collection": "necklaces", "label": "Necklaces" } },
-        "c9": { "type": "tile", "settings": { "collection": "bangles", "label": "Bangles" } },
-        "c10": { "type": "tile", "settings": { "collection": "rings", "label": "Rings" } }
+      "settings": {
+        "heading": "Browse all categories"
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10"]
+      "blocks": {
+        "c1": {
+          "type": "tile",
+          "settings": {
+            "collection": "maternity-dresses",
+            "label": "Maternity Dresses"
+          }
+        },
+        "c2": {
+          "type": "tile",
+          "settings": {
+            "collection": "feeding-dresses",
+            "label": "Feeding Dresses"
+          }
+        },
+        "c3": {
+          "type": "tile",
+          "settings": {
+            "collection": "nursing-bras",
+            "label": "Nursing Bras"
+          }
+        },
+        "c4": {
+          "type": "tile",
+          "settings": {
+            "collection": "maternity-nightwear",
+            "label": "Maternity Nightwear"
+          }
+        },
+        "c5": {
+          "type": "tile",
+          "settings": {
+            "collection": "kurtis",
+            "label": "Kurtis"
+          }
+        },
+        "c6": {
+          "type": "tile",
+          "settings": {
+            "collection": "kurta-sets",
+            "label": "Kurta Sets"
+          }
+        },
+        "c7": {
+          "type": "tile",
+          "settings": {
+            "collection": "earrings",
+            "label": "Earrings"
+          }
+        },
+        "c8": {
+          "type": "tile",
+          "settings": {
+            "collection": "necklaces",
+            "label": "Necklaces"
+          }
+        },
+        "c9": {
+          "type": "tile",
+          "settings": {
+            "collection": "bangles",
+            "label": "Bangles"
+          }
+        },
+        "c10": {
+          "type": "tile",
+          "settings": {
+            "collection": "rings",
+            "label": "Rings"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10"
+      ]
     },
     "featured": {
       "type": "featured-collection",
-      "settings": { "heading": "Featured products", "products_to_show": 4, "view_all_label": "View all" }
+      "settings": {
+        "heading": "Featured Products",
+        "products_to_show": 4,
+        "view_all_label": "View all"
+      }
     },
     "reviews": {
       "type": "testimonials",
-      "settings": { "heading": "Loved by our customers" },
-      "blocks": {
-        "q1": { "type": "quote", "settings": { "quote": "The feeding kurti is so thoughtfully made — soft fabric and easy access. A lifesaver during those early months.", "name": "Priya, Jaipur", "verified": true } },
-        "q2": { "type": "quote", "settings": { "quote": "Beautiful kurta set, exactly like the pictures. Delivery was quick and packaging was lovely.", "name": "Anjali, Mumbai", "verified": true } },
-        "q3": { "type": "quote", "settings": { "quote": "The silver earrings are elegant and everyday-wearable. Great quality for the price.", "name": "Sneha, Bengaluru", "verified": true } }
+      "settings": {
+        "heading": "Loved by our customers"
       },
-      "block_order": ["q1", "q2", "q3"]
+      "blocks": {
+        "q1": {
+          "type": "quote",
+          "settings": {
+            "quote": "The feeding kurti is so thoughtfully made — soft fabric and easy access. A lifesaver during those early months.",
+            "name": "Priya, Jaipur",
+            "verified": true
+          }
+        },
+        "q2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Beautiful kurta set, exactly like the pictures. Delivery was quick and packaging was lovely.",
+            "name": "Anjali, Mumbai",
+            "verified": true
+          }
+        },
+        "q3": {
+          "type": "quote",
+          "settings": {
+            "quote": "The silver earrings are elegant and everyday-wearable. Great quality for the price.",
+            "name": "Sneha, Bengaluru",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
     },
     "usps": {
       "type": "usp-strip",
       "blocks": {
-        "u1": { "type": "usp", "settings": { "icon": "shield", "title": "Prepaid & secure", "text": "100% secure checkout" } },
-        "u2": { "type": "usp", "settings": { "icon": "truck", "title": "Pan-India delivery", "text": "At your door in 5–7 days" } },
-        "u3": { "type": "usp", "settings": { "icon": "returns", "title": "Damage protection", "text": "Free replacement on damaged items" } },
-        "u4": { "type": "usp", "settings": { "icon": "quality", "title": "Quality checked", "text": "Every piece inspected" } }
+        "u1": {
+          "type": "usp",
+          "settings": {
+            "icon": "shield",
+            "title": "Prepaid & secure",
+            "text": "100% secure checkout"
+          }
+        },
+        "u2": {
+          "type": "usp",
+          "settings": {
+            "icon": "truck",
+            "title": "Pan-India delivery",
+            "text": "At your door in 5–7 days"
+          }
+        },
+        "u3": {
+          "type": "usp",
+          "settings": {
+            "icon": "returns",
+            "title": "Damage protection",
+            "text": "Free replacement on damaged items"
+          }
+        },
+        "u4": {
+          "type": "usp",
+          "settings": {
+            "icon": "quality",
+            "title": "Quality checked",
+            "text": "Every piece inspected"
+          }
+        }
       },
-      "block_order": ["u1", "u2", "u3", "u4"]
+      "block_order": [
+        "u1",
+        "u2",
+        "u3",
+        "u4"
+      ]
     },
-    "newsletter": { "type": "newsletter", "settings": {} }
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
   },
-  "order": ["slideshow", "worlds", "subcats", "featured", "reviews", "usps", "newsletter"]
+  "order": [
+    "slideshow",
+    "worlds",
+    "subcats",
+    "featured",
+    "reviews",
+    "usps",
+    "newsletter"
+  ]
 }
