@@ -186,7 +186,8 @@
       "type": "featured-collection",
       "settings": {
         "heading": "Featured products",
-        "products_to_show": 4,
+        "collection": "women",
+        "products_to_show": 8,
         "view_all_label": "View all"
       }
     },
