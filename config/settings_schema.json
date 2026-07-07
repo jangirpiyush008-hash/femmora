@@ -69,7 +69,7 @@
         ]
       },
       { "type": "checkbox", "id": "show_shipping_bar", "label": "Show free-shipping progress bar", "default": true },
-      { "type": "range", "id": "free_shipping_threshold", "min": 0, "max": 5000, "step": 100, "unit": "₹", "label": "Free shipping threshold", "default": 999 },
+      { "type": "text", "id": "free_shipping_threshold", "label": "Free shipping threshold (₹, number only)", "default": "999" },
       { "type": "text", "id": "prepaid_note", "label": "Prepaid nudge message", "default": "Prepaid orders get priority dispatch" },
       { "type": "checkbox", "id": "show_gst_note", "label": "Show \"Inclusive of all taxes\" under prices", "default": true }
     ]
