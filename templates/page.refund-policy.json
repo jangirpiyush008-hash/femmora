@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "policy-page",
+      "settings": {
+        "content": "<p>At Femorra, every order is quality-checked before dispatch. Because we are a prepaid store with direct-dispatch fulfilment, our return policy works as follows:</p><p><strong>Damaged, defective or wrong item received</strong></p><p>If your order arrives damaged, defective, or you received the wrong item or size, we will make it right with a <strong>replacement or full refund</strong>, subject to the conditions below:</p><ul><li><strong>Report within 48 hours</strong> of delivery by emailing theamazemedia2025@gmail.com or WhatsApp +91 81044 08935.</li><li>A clear, <strong>uncut unboxing video</strong> of the parcel — from sealed package to opened product — is <strong>mandatory</strong> for all damage or wrong-item claims. Claims without an unboxing video cannot be accepted.</li><li>Include your order number and photos of the product, labels and packaging.</li></ul><p>Once verified (usually within 24–48 hours), we will ship a replacement at no cost, or issue a full refund to your original payment method within <strong>5–7 business days</strong>.</p><p><strong>What is not eligible for return</strong></p><ul><li>Change of mind, or dislike of colour/fit where the correct item was delivered as described — please review size charts and photos carefully before ordering.</li><li>Products that have been used, washed, or returned without original tags and packaging.</li><li>Jewellery and intimate wear (feeding bras) once opened, for hygiene reasons — unless damaged or defective on arrival.</li><li>Claims raised after 48 hours of delivery, or without an unboxing video.</li></ul><p><strong>Cancellations</strong></p><p>Orders can be cancelled within <strong>12 hours</strong> of placing them, provided they have not been dispatched. Once dispatched, an order cannot be cancelled. To cancel, email us with your order number.</p><p><strong>Refund timeline</strong></p><p>All approved refunds are initiated within 48 hours of approval and reflect in your account within 5–7 business days depending on your bank or payment method.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

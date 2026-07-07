@@ -1,0 +1,65 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-head">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="cats">
+      {%- for block in section.blocks -%}
+        {%- assign coll = collections[block.settings.collection] -%}
+        <a href="{{ coll.url | default: block.settings.link | default: '#' }}" class="cat" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 600 }}"
+                 alt="{{ block.settings.label | escape }}"
+                 width="{{ block.settings.image.width }}"
+                 height="{{ block.settings.image.height }}"
+                 loading="lazy">
+          {%- elsif coll.featured_image != blank -%}
+            <img src="{{ coll.featured_image | image_url: width: 600 }}" alt="{{ coll.title | escape }}" loading="lazy">
+          {%- else -%}
+            {{ 'collection-apparel-2' | placeholder_svg_tag }}
+          {%- endif -%}
+          <span class="cat__label">{{ block.settings.label | default: coll.title | default: 'Category' }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category grid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Category tile",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Image override" },
+        { "type": "text", "id": "label", "label": "Label override" },
+        { "type": "url", "id": "link", "label": "Link override (if no collection)" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Category grid",
+      "blocks": [
+        { "type": "tile", "settings": { "label": "Maternity Dresses" } },
+        { "type": "tile", "settings": { "label": "Feeding Dresses" } },
+        { "type": "tile", "settings": { "label": "Nursing Bras" } },
+        { "type": "tile", "settings": { "label": "Maternity Nightwear" } },
+        { "type": "tile", "settings": { "label": "Kurtis" } },
+        { "type": "tile", "settings": { "label": "Kurta Sets" } },
+        { "type": "tile", "settings": { "label": "Earrings" } },
+        { "type": "tile", "settings": { "label": "Necklaces" } },
+        { "type": "tile", "settings": { "label": "Bangles" } },
+        { "type": "tile", "settings": { "label": "Rings" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

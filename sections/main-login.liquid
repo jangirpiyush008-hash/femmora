@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="page-width" style="max-width:460px">
+    <h1 style="text-align:center">{{ 'customer.login' | t }}</h1>
+    {%- form 'customer_login' -%}
+      {{ form.errors | default_errors }}
+      <div class="field">
+        <label for="LoginEmail">{{ 'customer.email' | t }}</label>
+        <input id="LoginEmail" class="input" type="email" name="customer[email]" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="LoginPassword">{{ 'customer.password' | t }}</label>
+        <input id="LoginPassword" class="input" type="password" name="customer[password]" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">{{ 'customer.login' | t }}</button>
+      <p style="text-align:center;margin-top:14px">
+        <a href="#recover" onclick="document.getElementById('RecoverBox').style.display='block';return false;">{{ 'customer.forgot' | t }}</a>
+      </p>
+    {%- endform -%}
+
+    <div id="RecoverBox" style="display:none;margin-top:16px;border-top:1px solid var(--color-muted);padding-top:16px">
+      {%- form 'recover_customer_password' -%}
+        {{ form.errors | default_errors }}
+        {%- if form.posted_successfully? -%}<p>We've emailed you a reset link.</p>{%- endif -%}
+        <div class="field">
+          <label for="RecoverEmail">{{ 'customer.email' | t }}</label>
+          <input id="RecoverEmail" class="input" type="email" name="email" required>
+        </div>
+        <button type="submit" class="btn btn--outline btn--full">Send reset link</button>
+      {%- endform -%}
+    </div>
+
+    <p style="text-align:center;margin-top:22px">New here? <a href="{{ routes.account_register_url }}"><strong>{{ 'customer.register' | t }}</strong></a></p>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Login", "settings": [] }
+{% endschema %}

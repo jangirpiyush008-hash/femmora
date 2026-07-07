@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "policy-page",
+      "settings": {
+        "content": "<p><strong>Femorra</strong> (femorra.in) respects your privacy. This policy explains what information we collect and how we use it.</p><p><strong>Information we collect</strong></p><ul><li><strong>Order information:</strong> name, shipping address, phone number, email address and payment confirmation details when you place an order.</li><li><strong>Device information:</strong> browser type, IP address and pages viewed — collected via cookies and similar technologies to improve the shopping experience.</li><li><strong>Communication:</strong> messages you send us via email, WhatsApp or contact forms.</li></ul><p><strong>How we use it</strong></p><ul><li>To process and deliver your orders, and send order confirmations and tracking updates.</li><li>To respond to your support queries.</li><li>To screen orders for fraud or abuse.</li><li>With your consent, to send offers and updates — you can unsubscribe anytime.</li></ul><p><strong>Payments:</strong> Payments are processed by our third-party payment gateway (such as Razorpay). We do <strong>not</strong> store your card, UPI or banking details on our servers. Payment data is handled by the gateway as per their privacy policy and RBI guidelines.</p><p><strong>Sharing:</strong> We share your delivery details (name, address, phone) with our supplier, warehouse and courier partners strictly for order fulfilment. We never sell your personal data to third parties.</p><p><strong>Cookies:</strong> We use cookies for cart functionality, analytics and, if enabled, advertising measurement (such as Meta or Google). You can disable cookies in your browser, though parts of the site may stop working.</p><p><strong>Data retention:</strong> We retain order records as required for accounting, tax and legal compliance under Indian law.</p><p><strong>Your rights:</strong> You may request access to, correction of, or deletion of your personal data by writing to theamazemedia2025@gmail.com.</p><p><strong>Contact:</strong> For any privacy-related questions — theamazemedia2025@gmail.com, +91 81044 08935.</p><p>We may update this policy from time to time; the latest version will always be available on this page.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

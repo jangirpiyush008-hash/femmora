@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="{{ settings.color_brand }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign heading_font = settings.type_header_font
+      assign body_font = settings.type_body_font
+    -%}
+    {%- if heading_font.family and body_font.family -%}
+      <style>
+        {{ heading_font | font_face: font_display: 'swap' }}
+        {{ body_font | font_face: font_display: 'swap' }}
+      </style>
+    {%- endif -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap">
+    <style>
+      :root {
+        --color-bg: {{ settings.color_bg }};
+        --color-text: {{ settings.color_text }};
+        --color-brand: {{ settings.color_brand }};
+        --color-brand-contrast: {{ settings.color_brand_contrast }};
+        --color-link: {{ settings.color_link }};
+        --color-link-hover: {{ settings.color_link_hover }};
+        --color-accent-gold: {{ settings.color_accent_gold }};
+        --color-accent-sage: {{ settings.color_accent_sage }};
+        --color-muted: {{ settings.color_muted }};
+        --font-heading: {{ heading_font.family | default: 'Playfair Display' }}, "Playfair Display", Georgia, serif;
+        --font-body: {{ body_font.family | default: 'Nunito Sans' }}, "Nunito Sans", -apple-system, "Segoe UI", sans-serif;
+        --page-width: {{ settings.page_width }}px;
+        --section-pad: {{ settings.section_padding }}px;
+        --radius-card: {{ settings.card_radius }}px;
+        --radius-btn: {{ settings.button_radius }}px;
+      }
+    </style>
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  </head>
+
+  <body class="template-{{ request.page_type | handle }}">
+    <a class="skip-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {% render 'cart-drawer' %}
+    {%- endif -%}
+
+    {{ 'theme.js' | asset_url | script_tag }}
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<section class="section">
+  <div class="page-width">
+    <h1 style="text-align:center;margin-bottom:28px">{{ page_title | default: 'Collections' }}</h1>
+    <div class="cats">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" class="cat">
+          {%- if collection.featured_image -%}
+            <img src="{{ collection.featured_image | image_url: width: 600 }}" alt="{{ collection.title | escape }}" loading="lazy">
+          {%- else -%}
+            {{ 'collection-apparel-3' | placeholder_svg_tag }}
+          {%- endif -%}
+          <span class="cat__label">{{ collection.title }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collections list", "settings": [] }
+{% endschema %}

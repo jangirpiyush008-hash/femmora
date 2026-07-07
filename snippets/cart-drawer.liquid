@@ -1,0 +1,25 @@
+<div
+  id="CartDrawer"
+  class="cdrawer"
+  data-ship-bar="{{ settings.show_shipping_bar }}"
+  data-ship-threshold="{{ settings.free_shipping_threshold }}"
+  data-prepaid-note="{{ settings.prepaid_note | escape }}"
+  data-empty-text="{{ 'cart.empty' | t | escape }}"
+  data-continue-text="{{ 'general.continue_shopping' | t | escape }}"
+  data-subtotal-text="{{ 'cart.subtotal' | t | escape }}"
+  data-taxes-text="{{ 'cart.taxes_shipping' | t | escape }}"
+  data-checkout-text="{{ 'cart.checkout' | t | escape }}"
+  data-view-cart-text="{{ 'cart.view_cart' | t | escape }}"
+>
+  <div class="cdrawer__overlay" data-close-cart></div>
+  <aside class="cdrawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}">
+    <div class="cdrawer__head">
+      <h3>{{ 'cart.title' | t }}</h3>
+      <button class="header__icon" data-close-cart aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon', icon: 'close' %}
+      </button>
+    </div>
+    <div class="cdrawer__items"></div>
+    <div class="cdrawer__foot"></div>
+  </aside>
+</div>

@@ -1,0 +1,50 @@
+{
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "menu": "Menu",
+    "search": "Search",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "general": {
+    "continue_shopping": "Continue shopping",
+    "products_coming_soon": "Products coming soon"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "buy_now": "Buy now",
+    "sold_out": "Sold out",
+    "quantity": "Quantity",
+    "sale": "Sale",
+    "trust_line": "100% secure prepaid checkout • Pan-India delivery in 5–7 days",
+    "tax_note": "Inclusive of all taxes"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "view_cart": "View cart",
+    "note_label": "Order notes",
+    "taxes_shipping": "Taxes and shipping calculated at checkout"
+  },
+  "customer": {
+    "login": "Log in",
+    "register": "Create account",
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "forgot": "Forgot your password?"
+  },
+  "newsletter": {
+    "label": "Email address",
+    "button": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products…",
+    "no_results": "No results found"
+  }
+}

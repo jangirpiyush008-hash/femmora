@@ -1,0 +1,94 @@
+<div class="header-wrap">
+  <header class="header page-width">
+    <div style="display:flex;align-items:center;gap:4px">
+      <button class="header__icon burger" data-open-mnav aria-label="{{ 'accessibility.menu' | t }}" aria-controls="MobileNav">
+        {% render 'icon', icon: 'menu' %}
+      </button>
+      <a href="{{ routes.root_url }}" class="header__logo">
+        {%- if settings.logo != blank -%}
+          <img src="{{ settings.logo | image_url: width: 500 }}"
+               alt="{{ shop.name | escape }}"
+               width="{{ settings.logo_width }}"
+               height="{{ settings.logo_width | divided_by: settings.logo.aspect_ratio | round }}"
+               style="--logo-w: {{ settings.logo_width }}px"
+               loading="eager">
+        {%- else -%}
+          {{ settings.brand_name | default: shop.name }}
+        {%- endif -%}
+      </a>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+      {%- for link in section.settings.menu.links -%}
+        {%- liquid
+          assign t = link.title | downcase
+          assign extra_class = ''
+          if t contains 'mom' or t contains 'maternity'
+            assign extra_class = 'nav__item--mom'
+          elsif t contains 'jewel'
+            assign extra_class = 'nav__item--jewellery'
+          endif
+        -%}
+        <div class="nav__item {{ extra_class }}">
+          <a class="nav__link" href="{{ link.url }}"{% if link.links != blank %} aria-haspopup="true"{% endif %}>
+            {{ link.title }}
+            {%- if link.links != blank %} {% render 'icon', icon: 'chevron' %}{% endif -%}
+          </a>
+          {%- if link.links != blank -%}
+            <div class="nav__drop">
+              {%- for child in link.links -%}
+                <a href="{{ child.url }}">{{ child.title }}</a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__icons">
+      <a href="{{ routes.search_url }}" class="header__icon" aria-label="{{ 'accessibility.search' | t }}">
+        {% render 'icon', icon: 'search' %}
+      </a>
+      <a href="{{ routes.account_url }}" class="header__icon" aria-label="{{ 'accessibility.account' | t }}">
+        {% render 'icon', icon: 'account' %}
+      </a>
+      <a href="{{ routes.cart_url }}" class="header__icon" data-open-cart aria-label="{{ 'accessibility.cart' | t }}">
+        {% render 'icon', icon: 'cart' %}
+        <span class="cart-count"{% if cart.item_count == 0 %} style="display:none"{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="MobileNav" class="mnav" aria-hidden="true">
+  <div class="mnav__overlay" data-close-mnav></div>
+  <div class="mnav__panel" role="dialog" aria-modal="true" aria-label="{{ 'accessibility.menu' | t }}">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+      <button class="header__icon" data-close-mnav aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon', icon: 'close' %}
+      </button>
+    </div>
+    {%- for link in section.settings.menu.links -%}
+      {%- if link.links != blank -%}
+        <details>
+          <summary>{{ link.title }} {% render 'icon', icon: 'chevron' %}</summary>
+          {%- for child in link.links -%}
+            <a href="{{ child.url }}" data-close-mnav>{{ child.title }}</a>
+          {%- endfor -%}
+        </details>
+      {%- else -%}
+        <a href="{{ link.url }}" data-close-mnav>{{ link.title }}</a>
+      {%- endif -%}
+    {%- endfor -%}
+    <a href="{{ routes.account_url }}" data-close-mnav>{{ 'accessibility.account' | t }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Main menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,233 @@
+<section class="section">
+  <div class="page-width">
+    <div class="product" data-variant-root data-sold-out-text="{{ 'products.sold_out' | t | escape }}" data-add-text="{{ 'products.add_to_cart' | t | escape }}">
+      <!-- Gallery -->
+      <div class="product__gallery">
+        <div class="product__main-img" data-main-image>
+          {%- if product.featured_media -%}
+            <img src="{{ product.featured_media | image_url: width: 1100 }}"
+                 srcset="{{ product.featured_media | image_url: width: 600 }} 600w, {{ product.featured_media | image_url: width: 1100 }} 1100w"
+                 sizes="(min-width: 990px) 50vw, 100vw"
+                 alt="{{ product.featured_media.alt | default: product.title | escape }}"
+                 width="{{ product.featured_media.width }}"
+                 height="{{ product.featured_media.height }}">
+          {%- else -%}
+            {{ 'product-apparel-2' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        {%- if product.media.size > 1 -%}
+          <div class="product__thumbs">
+            {%- for media in product.media -%}
+              {%- if media.media_type == 'image' -%}
+                <button type="button" data-thumb data-full="{{ media | image_url: width: 1100 }}" class="{% if forloop.first %}active{% endif %}" aria-label="View image {{ forloop.index }}">
+                  <img src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | escape }}" loading="lazy">
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Info -->
+      <div class="product__info">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+
+            {%- when 'vendor' -%}
+              {%- if product.vendor != blank -%}
+                <div class="product__vendor" {{ block.shopify_attributes }}>{{ product.vendor }}</div>
+              {%- endif -%}
+
+            {%- when 'title' -%}
+              <h1 class="product__title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+            {%- when 'price' -%}
+              <div class="product__price" data-price-wrap {{ block.shopify_attributes }}>
+                {% render 'price', product: product %}
+              </div>
+              {%- if settings.show_gst_note -%}
+                <small class="tax-note">{{ 'products.tax_note' | t }}</small>
+              {%- endif -%}
+
+            {%- when 'variant_picker' -%}
+              {%- unless product.has_only_default_variant -%}
+                <div {{ block.shopify_attributes }}>
+                  {%- for option in product.options_with_values -%}
+                    <div class="opt" data-option-group>
+                      <div class="opt__label">{{ option.name }}</div>
+                      <div class="opt__values">
+                        {%- for value in option.values -%}
+                          <input type="radio"
+                                 id="Opt-{{ option.position }}-{{ forloop.index }}"
+                                 name="option-{{ option.position }}"
+                                 value="{{ value | escape }}"
+                                 {% if option.selected_value == value %}checked{% endif %}>
+                          <label for="Opt-{{ option.position }}-{{ forloop.index }}">{{ value }}</label>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {%- endunless -%}
+
+            {%- when 'buy_buttons' -%}
+              {%- form 'product', product, data-product-form: '' -%}
+                <input type="hidden" name="id" data-variant-id value="{{ product.selected_or_first_available_variant.id }}">
+                <div class="buy-row" {{ block.shopify_attributes }}>
+                  <div class="buy-row__qty">
+                    <div class="qty">
+                      <button type="button" data-step="down" aria-label="Decrease quantity">−</button>
+                      <input type="number" name="quantity" value="1" min="1" aria-label="{{ 'products.quantity' | t }}">
+                      <button type="button" data-step="up" aria-label="Increase quantity">+</button>
+                    </div>
+                    <button type="submit" class="btn btn--primary" data-add-btn {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+                      {%- if product.selected_or_first_available_variant.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+                    </button>
+                  </div>
+                  <button type="button" class="btn btn--outline btn--full" data-buy-now>{{ 'products.buy_now' | t }}</button>
+                </div>
+                <div class="trust-line">{% render 'icon', icon: 'shield' %} {{ 'products.trust_line' | t }}</div>
+              {%- endform -%}
+
+            {%- when 'feeding_access' -%}
+              {%- assign feeding = product.metafields.custom.feeding_access -%}
+              {%- if feeding != blank or block.settings.fallback_text != blank -%}
+                {%- if feeding != blank or block.settings.always_show -%}
+                  <div class="feeding-block" {{ block.shopify_attributes }}>
+                    <h4>{% render 'icon', icon: 'feeding' %} {{ block.settings.heading }}</h4>
+                    <p>{{ feeding | default: block.settings.fallback_text }}</p>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+
+            {%- when 'description' -%}
+              <div class="accordion" {{ block.shopify_attributes }}>
+                <details open>
+                  <summary>Description</summary>
+                  <div class="acc-body rte">{{ product.description }}</div>
+                </details>
+                <details>
+                  <summary>Fabric &amp; Care</summary>
+                  <div class="acc-body">
+                    {{ product.metafields.custom.fabric | default: block.settings.fabric_default }}
+                  </div>
+                </details>
+                <details>
+                  <summary>Size Chart</summary>
+                  <div class="acc-body">
+                    {%- if product.metafields.custom.size_chart != blank -%}
+                      {{ product.metafields.custom.size_chart }}
+                    {%- else -%}
+                      <table class="size-table">
+                        <thead><tr><th>Size</th><th>Bust (in)</th><th>Waist (in)</th><th>Length (in)</th></tr></thead>
+                        <tbody>
+                          <tr><td>S</td><td>36</td><td>32</td><td>44</td></tr>
+                          <tr><td>M</td><td>38</td><td>34</td><td>45</td></tr>
+                          <tr><td>L</td><td>40</td><td>36</td><td>45</td></tr>
+                          <tr><td>XL</td><td>42</td><td>38</td><td>46</td></tr>
+                          <tr><td>XXL</td><td>44</td><td>40</td><td>46</td></tr>
+                        </tbody>
+                      </table>
+                      <p style="margin-top:10px;font-size:.8rem;opacity:.7">Measurements are approximate. Compare with a garment you already own for best fit.</p>
+                    {%- endif -%}
+                  </div>
+                </details>
+                <details>
+                  <summary>Shipping &amp; Returns</summary>
+                  <div class="acc-body">{{ block.settings.shipping_text }}</div>
+                </details>
+              </div>
+
+          {%- endcase -%}
+        {%- endfor -%}
+
+        <script type="application/json" data-variants-json>
+          [
+            {%- for variant in product.variants -%}
+              {
+                "id": {{ variant.id }},
+                "price": {{ variant.price }},
+                "compare_at_price": {{ variant.compare_at_price | default: 0 }},
+                "available": {{ variant.available }},
+                "options": {{ variant.options | json }}
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related products -->
+{%- assign related_coll = product.collections.first -%}
+{%- if related_coll and related_coll.products.size > 1 -%}
+  <section class="section" style="background:#fff;border-top:1px solid var(--color-muted)">
+    <div class="page-width">
+      <div class="section-head"><h2>{{ section.settings.related_heading }}</h2></div>
+      <div class="product-grid">
+        {%- assign shown = 0 -%}
+        {%- for rel in related_coll.products -%}
+          {%- if rel.id != product.id and shown < 4 -%}
+            {% render 'product-card', product: rel %}
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+<div id="ZoomModal" class="zoom-modal" role="dialog" aria-modal="true" aria-label="Product image">
+  <button type="button" data-close-zoom aria-label="{{ 'accessibility.close' | t }}">✕</button>
+  <img src="" alt="">
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "text", "id": "related_heading", "label": "Related products heading", "default": "You may also like" }
+  ],
+  "blocks": [
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "variant_picker", "name": "Variant picker", "limit": 1 },
+    { "type": "buy_buttons", "name": "Buy buttons", "limit": 1 },
+    {
+      "type": "feeding_access",
+      "name": "Feeding access block",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Feeding Access & Comfort" },
+        { "type": "textarea", "id": "fallback_text", "label": "Fallback text (used when metafield is empty)", "default": "Discreet feeding zips and soft, breathable fabric — designed for easy nursing access anywhere." },
+        { "type": "checkbox", "id": "always_show", "label": "Show even when metafield is empty", "default": false }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description & accordions",
+      "limit": 1,
+      "settings": [
+        { "type": "textarea", "id": "fabric_default", "label": "Default Fabric & Care text", "default": "Soft, breathable fabric. Gentle machine wash cold, do not bleach, dry in shade." },
+        { "type": "textarea", "id": "shipping_text", "label": "Shipping & Returns text", "default": "100% prepaid store — dispatched within 24–48 hours, delivered pan-India in 5–7 business days. Free shipping over ₹999. Damaged or wrong item? Contact us within 48 hours with an unboxing video for a free replacement or refund — see our Refund & Return Policy." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product",
+      "blocks": [
+        { "type": "vendor" },
+        { "type": "title" },
+        { "type": "price" },
+        { "type": "variant_picker" },
+        { "type": "buy_buttons" },
+        { "type": "feeding_access" },
+        { "type": "description" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{
+  "current": {
+    "brand_name": "Femorra",
+    "logo_width": 140,
+    "color_bg": "#FDF4F1",
+    "color_text": "#2B2724",
+    "color_brand": "#A64D5F",
+    "color_brand_contrast": "#FFFFFF",
+    "color_link": "#A64D5F",
+    "color_link_hover": "#C0607A",
+    "color_accent_gold": "#C6A15B",
+    "color_accent_sage": "#A9B9A3",
+    "color_muted": "#EFDEDA",
+    "type_header_font": "playfair_display_n4",
+    "type_body_font": "nunito_sans_n4",
+    "page_width": 1200,
+    "section_padding": 56,
+    "card_radius": 8,
+    "button_radius": 8,
+    "card_show_vendor": false,
+    "card_show_sale_badge": true,
+    "cart_type": "drawer",
+    "show_shipping_bar": true,
+    "free_shipping_threshold": 999,
+    "prepaid_note": "Prepaid orders get priority dispatch",
+    "show_gst_note": true,
+    "social_instagram": "",
+    "social_facebook": "",
+    "social_whatsapp": "",
+    "social_youtube": ""
+  }
+}

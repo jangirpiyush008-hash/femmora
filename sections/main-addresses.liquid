@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="page-width" style="max-width:640px">
+    <h1 style="text-align:center">Your addresses</h1>
+    <p style="text-align:center"><a href="{{ routes.account_url }}">&larr; Back to account</a></p>
+
+    {%- paginate customer.addresses by 6 -%}
+      {%- for address in customer.addresses -%}
+        <div style="border:1px solid var(--color-muted);border-radius:var(--radius-card);padding:18px;margin-bottom:14px;background:#fff">
+          {{ address | format_address }}
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+
+    <h3 style="margin-top:28px">Add a new address</h3>
+    {%- form 'customer_address', customer.new_address -%}
+      <div class="field"><label for="AddrLine">Address</label><input id="AddrLine" class="input" type="text" name="address[address1]"></div>
+      <div class="field"><label for="AddrCity">City</label><input id="AddrCity" class="input" type="text" name="address[city]"></div>
+      <div class="field"><label for="AddrProv">State</label><input id="AddrProv" class="input" type="text" name="address[province]"></div>
+      <div class="field"><label for="AddrZip">PIN code</label><input id="AddrZip" class="input" type="text" name="address[zip]"></div>
+      <div class="field"><label for="AddrPhone">Phone</label><input id="AddrPhone" class="input" type="tel" name="address[phone]"></div>
+      <button type="submit" class="btn btn--primary">Save address</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Addresses", "settings": [] }
+{% endschema %}

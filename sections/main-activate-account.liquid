@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="page-width" style="max-width:460px">
+    <h1 style="text-align:center">Activate account</h1>
+    {%- form 'activate_customer_password' -%}
+      {{ form.errors | default_errors }}
+      <div class="field">
+        <label for="ActPassword">Password</label>
+        <input id="ActPassword" class="input" type="password" name="customer[password]" autocomplete="new-password" required>
+      </div>
+      <div class="field">
+        <label for="ActPasswordConfirm">Confirm password</label>
+        <input id="ActPasswordConfirm" class="input" type="password" name="customer[password_confirmation]" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Activate</button>
+      <button type="submit" name="decline" class="btn btn--outline btn--full" style="margin-top:8px">Decline invitation</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Activate account", "settings": [] }
+{% endschema %}

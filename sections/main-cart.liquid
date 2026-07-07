@@ -1,0 +1,64 @@
+<section class="section">
+  <div class="page-width cart-page">
+    <h1 style="text-align:center;margin-bottom:28px">{{ 'cart.title' | t }}</h1>
+
+    {%- if cart.item_count > 0 -%}
+      {%- if settings.prepaid_note != blank -%}
+        <div class="prepaid-note">⚡ {{ settings.prepaid_note }}</div>
+      {%- endif -%}
+
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        {%- for item in cart.items -%}
+          <div class="line-item" style="grid-template-columns:88px 1fr auto">
+            <a href="{{ item.url }}">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}" style="width:88px" loading="lazy">
+              {%- endif -%}
+            </a>
+            <div>
+              <a class="line-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
+              {%- unless item.variant.title == 'Default Title' -%}
+                <div class="line-item__variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="qty" style="margin-top:10px">
+                <button type="button" data-step="down" aria-label="Decrease quantity">−</button>
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="{{ 'products.quantity' | t }}">
+                <button type="button" data-step="up" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">{{ item.final_line_price | money }}</div>
+              <a class="line-item__remove" href="{{ item.url_to_remove }}">Remove</a>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <div class="cart-page__row">
+          <div style="flex:1;min-width:240px">
+            <label class="field" style="margin:0">
+              <span style="display:block;font-size:.8rem;font-weight:600;margin-bottom:6px">{{ 'cart.note_label' | t }}</span>
+              <textarea class="input" name="note" rows="3">{{ cart.note }}</textarea>
+            </label>
+          </div>
+          <div class="cart-page__totals">
+            <div style="font-size:1.2rem;font-weight:700;margin-bottom:4px">{{ 'cart.subtotal' | t }}: {{ cart.total_price | money }}</div>
+            <p style="font-size:.8rem;opacity:.6;margin-bottom:14px">{{ 'cart.taxes_shipping' | t }}</p>
+            <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+              <button type="submit" name="update" class="btn btn--outline">Update</button>
+              <button type="submit" name="checkout" class="btn btn--primary">{{ 'cart.checkout' | t }}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="empty-state">
+        <p>{{ 'cart.empty' | t }}</p>
+        <a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

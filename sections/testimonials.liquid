@@ -1,0 +1,46 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-head"><h2>{{ section.settings.heading }}</h2></div>
+    <div class="quotes">
+      {%- for block in section.blocks -%}
+        <div class="quote" {{ block.shopify_attributes }}>
+          <div class="quote__stars" aria-hidden="true">★★★★★</div>
+          <p class="quote__text">“{{ block.settings.quote }}”</p>
+          <div class="quote__name">{{ block.settings.name }}</div>
+          {%- if block.settings.verified -%}<span class="quote__verified">✓ Verified buyer</span>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What our customers say" }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "So comfortable and the feeding access is genuinely practical. Ordering again!" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Customer, City" },
+        { "type": "checkbox", "id": "verified", "label": "Show \"Verified buyer\"", "default": true }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "quote", "settings": { "quote": "The feeding kurti is so thoughtfully made — soft fabric and easy access. A lifesaver.", "name": "New mom, Jaipur" } },
+        { "type": "quote", "settings": { "quote": "Beautiful kurta set, exactly like the pictures. Fast delivery too.", "name": "Customer, Mumbai" } },
+        { "type": "quote", "settings": { "quote": "The silver earrings are elegant and everyday-wearable. Great quality.", "name": "Customer, Bengaluru" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

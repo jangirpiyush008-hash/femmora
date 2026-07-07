@@ -1,0 +1,23 @@
+{%- liquid
+  comment
+    Renders price. Accepts: product (object) OR price/compare_at_price values.
+    show_tax_note: boolean (optional)
+  endcomment
+  if product
+    assign price_val = product.price
+    assign compare_val = product.compare_at_price
+  endif
+  assign on_sale = false
+  if compare_val > price_val
+    assign on_sale = true
+  endif
+-%}
+<span class="price{% if on_sale %} price--sale{% endif %}">
+  <span class="price__current">{{ price_val | money }}</span>
+  {%- if on_sale -%}
+    <span class="price__compare">{{ compare_val | money }}</span>
+  {%- endif -%}
+</span>
+{%- if show_tax_note and settings.show_gst_note -%}
+  <small class="tax-note">{{ 'products.tax_note' | t }}</small>
+{%- endif -%}

@@ -1,0 +1,40 @@
+<section class="hero">
+  {%- if section.settings.image != blank -%}
+    <div class="hero__media">
+      <img src="{{ section.settings.image | image_url: width: 2000 }}"
+           srcset="{{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1400 }} 1400w, {{ section.settings.image | image_url: width: 2200 }} 2200w"
+           sizes="100vw"
+           alt="{{ section.settings.heading | escape }}"
+           width="{{ section.settings.image.width }}"
+           height="{{ section.settings.image.height }}"
+           loading="eager">
+    </div>
+  {%- else -%}
+    <div class="hero__placeholder" aria-hidden="true"></div>
+  {%- endif -%}
+  <div class="hero__overlay" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }}"></div>
+  <div class="hero__content">
+    <h1>{{ section.settings.heading }}</h1>
+    {%- if section.settings.subtext != blank -%}
+      <p>{{ section.settings.subtext }}</p>
+    {%- endif -%}
+    {%- if section.settings.cta_label != blank -%}
+      <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--ghost-light">{{ section.settings.cta_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "range", "id": "overlay", "min": 0, "max": 80, "step": 5, "unit": "%", "label": "Overlay opacity", "default": 30 },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "New arrivals" },
+    { "type": "text", "id": "subtext", "label": "Subtext", "default": "Maternity wear, ethnic sets and silver jewellery — made for you." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Hero banner" }]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+<section class="section">
+  <div class="page-width page-narrow">
+    <h1 style="text-align:center">{{ page.title }}</h1>
+    <div class="rte" style="text-align:center;margin-bottom:28px">
+      {{ page.content }}
+      {%- if section.settings.details != blank -%}
+        <p>{{ section.settings.details }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- form 'contact' -%}
+      {%- if form.posted_successfully? -%}
+        <p style="background:color-mix(in srgb, var(--color-accent-sage) 25%, #fff);padding:14px;border-radius:8px;text-align:center">
+          Thanks! We'll get back to you within 24 hours (IST business hours).
+        </p>
+      {%- endif -%}
+      {{ form.errors | default_errors }}
+      <div class="field">
+        <label for="ContactName">Name</label>
+        <input id="ContactName" class="input" type="text" name="contact[name]" required>
+      </div>
+      <div class="field">
+        <label for="ContactEmail">Email</label>
+        <input id="ContactEmail" class="input" type="email" name="contact[email]" required>
+      </div>
+      <div class="field">
+        <label for="ContactPhone">Phone</label>
+        <input id="ContactPhone" class="input" type="tel" name="contact[phone]">
+      </div>
+      <div class="field">
+        <label for="ContactBody">Message</label>
+        <textarea id="ContactBody" class="input" name="contact[body]" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary">Send message</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    { "type": "textarea", "id": "details", "label": "Contact details", "default": "Email: theamazemedia2025@gmail.com • Phone/WhatsApp: +91 81044 08935 • Mon–Sat, 10am–6pm IST" }
+  ]
+}
+{% endschema %}

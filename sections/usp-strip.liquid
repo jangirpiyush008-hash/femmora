@@ -1,0 +1,51 @@
+<section class="section" style="background:#fff;border-block:1px solid var(--color-muted)">
+  <div class="page-width">
+    <div class="usps">
+      {%- for block in section.blocks -%}
+        <div class="usp" {{ block.shopify_attributes }}>
+          <span class="usp__icon">{% render 'icon', icon: block.settings.icon %}</span>
+          <h4>{{ block.settings.title }}</h4>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value strip",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "Value point",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "shield",
+          "options": [
+            { "value": "shield", "label": "Shield (secure)" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "truck", "label": "Truck (shipping)" },
+            { "value": "quality", "label": "Quality medal" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Prepaid & secure" },
+        { "type": "text", "id": "text", "label": "Text", "default": "100% secure checkout" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Value strip",
+      "blocks": [
+        { "type": "usp", "settings": { "icon": "shield", "title": "Prepaid & secure", "text": "100% secure checkout" } },
+        { "type": "usp", "settings": { "icon": "truck", "title": "Pan-India delivery", "text": "At your door in 5–7 days" } },
+        { "type": "usp", "settings": { "icon": "returns", "title": "Damage protection", "text": "Free replacement on damaged items" } },
+        { "type": "usp", "settings": { "icon": "quality", "title": "Quality checked", "text": "Every piece inspected" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

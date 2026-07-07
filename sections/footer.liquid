@@ -1,0 +1,80 @@
+<footer class="footer">
+  <div class="page-width">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <h4>{{ settings.brand_name | default: shop.name }}</h4>
+        <p>{{ section.settings.about_text }}</p>
+        <div class="footer__social">
+          {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram">{% render 'icon', icon: 'instagram' %}</a>{%- endif -%}
+          {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook">{% render 'icon', icon: 'facebook' %}</a>{%- endif -%}
+          {%- if settings.social_whatsapp != blank -%}<a href="{{ settings.social_whatsapp }}" aria-label="WhatsApp">{% render 'icon', icon: 'whatsapp' %}</a>{%- endif -%}
+          {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" aria-label="YouTube">{% render 'icon', icon: 'youtube' %}</a>{%- endif -%}
+        </div>
+      </div>
+
+      <div>
+        <h4>{{ section.settings.shop_heading }}</h4>
+        <ul>
+          {%- for link in section.settings.shop_menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div>
+        <h4>{{ section.settings.help_heading }}</h4>
+        <ul>
+          {%- for link in section.settings.help_menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div>
+        <h4>{{ section.settings.newsletter_heading }}</h4>
+        <p style="font-size:.88rem;opacity:.85">{{ section.settings.newsletter_text }}</p>
+        {%- form 'customer' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.posted_successfully? -%}
+            <p style="font-size:.85rem">{{ 'newsletter.success' | t }}</p>
+          {%- else -%}
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <label class="visually-hidden" for="FooterEmail">{{ 'newsletter.label' | t }}</label>
+              <input id="FooterEmail" class="input" type="email" name="contact[email]" placeholder="{{ 'newsletter.label' | t }}" required style="flex:1;border:none">
+              <button type="submit" class="btn" style="background:var(--color-accent-gold);color:#2B2724">{{ 'newsletter.button' | t }}</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+
+    <div class="footer__trust">
+      <span>🔒 100% secure prepaid checkout</span>
+      <span>🚚 Pan-India delivery in 5–7 days</span>
+      <span>↺ Damage protection on every order</span>
+      <span>💬 WhatsApp support</span>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ settings.brand_name | default: shop.name }}. All rights reserved.</span>
+      <div class="footer__pay">
+        <span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>Net Banking</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "about_text", "label": "About text", "default": "Thoughtfully designed maternity wear, ethnic clothing and silver jewellery for every chapter of her story." },
+    { "type": "text", "id": "shop_heading", "label": "Shop column heading", "default": "Shop" },
+    { "type": "link_list", "id": "shop_menu", "label": "Shop menu" },
+    { "type": "text", "id": "help_heading", "label": "Help column heading", "default": "Help" },
+    { "type": "link_list", "id": "help_menu", "label": "Help menu" },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Stay in touch" },
+    { "type": "text", "id": "newsletter_text", "label": "Newsletter text", "default": "New arrivals, restocks and offers — straight to your inbox." }
+  ]
+}
+{% endschema %}

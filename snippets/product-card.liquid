@@ -1,0 +1,37 @@
+{%- liquid
+  comment
+    Product card. Accepts: product (object)
+  endcomment
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+<div class="pcard">
+  <a href="{{ product.url }}" class="pcard__media" aria-label="{{ product.title | escape }}">
+    {%- if product.featured_media -%}
+      <img
+        src="{{ product.featured_media | image_url: width: 600 }}"
+        srcset="{{ product.featured_media | image_url: width: 350 }} 350w, {{ product.featured_media | image_url: width: 600 }} 600w, {{ product.featured_media | image_url: width: 900 }} 900w"
+        sizes="(min-width: 990px) 25vw, 50vw"
+        alt="{{ product.featured_media.alt | default: product.title | escape }}"
+        width="{{ product.featured_media.width }}"
+        height="{{ product.featured_media.height }}"
+        loading="lazy">
+    {%- else -%}
+      {{ 'product-apparel-1' | placeholder_svg_tag }}
+    {%- endif -%}
+    {%- if product.available == false -%}
+      <span class="pcard__badge pcard__badge--soldout">{{ 'products.sold_out' | t }}</span>
+    {%- elsif on_sale and settings.card_show_sale_badge -%}
+      <span class="pcard__badge">{{ 'products.sale' | t }}</span>
+    {%- endif -%}
+  </a>
+  <div>
+    {%- if settings.card_show_vendor and product.vendor != blank -%}
+      <div class="pcard__vendor">{{ product.vendor }}</div>
+    {%- endif -%}
+    <h3 class="pcard__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {% render 'price', product: product %}
+  </div>
+</div>
