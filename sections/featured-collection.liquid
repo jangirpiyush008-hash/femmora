@@ -14,12 +14,21 @@
           {% render 'product-card', product: product %}
         {%- endfor -%}
       {%- else -%}
+        {%- liquid
+          assign dnames = "Cotton Feeding Kurti;Maternity A-line Dress;Nursing Bra — Pack of 3;Kurta Set with Dupatta;Silver Oxidised Earrings;Soft Maternity Nightwear;Straight Cotton Kurti;Silver Necklace Set" | split: ";"
+          assign dprices = "799;1199;699;1499;499;899;649;1299" | split: ";"
+          assign dcompare = "1499;1999;999;2499;899;1499;1199;2199" | split: ";"
+        -%}
         {%- for i in (1..section.settings.products_to_show) -%}
+          {%- assign idx = forloop.index0 | modulo: 8 -%}
           <div class="pcard">
-            <div class="pcard__media">{{ 'product-apparel-3' | placeholder_svg_tag }}</div>
+            <a class="pcard__media" href="{{ routes.all_products_collection_url }}">
+              <span class="pcard__badge">Sample</span>
+              {{ 'product-apparel-3' | placeholder_svg_tag }}
+            </a>
             <div>
-              <h3 class="pcard__title">{{ 'general.products_coming_soon' | t }}</h3>
-              <span class="price">₹—</span>
+              <h3 class="pcard__title">{{ dnames[idx] }}</h3>
+              <span class="price price--sale"><span class="price__current">₹{{ dprices[idx] }}</span><span class="price__compare">₹{{ dcompare[idx] }}</span></span>
             </div>
           </div>
         {%- endfor -%}

@@ -68,11 +68,21 @@
               </nav>
             {%- endif -%}
           {%- else -%}
-            <div class="empty-state">
-              <h2>{{ 'general.products_coming_soon' | t }}</h2>
-              <p>We're adding products to this collection. Check back soon!</p>
-              <a class="btn btn--primary" href="{{ routes.root_url }}">{{ 'general.continue_shopping' | t }}</a>
+            {%- liquid
+              assign dnames = "Cotton Feeding Kurti;Maternity A-line Dress;Nursing Bra — Pack of 3;Kurta Set with Dupatta;Silver Oxidised Earrings;Soft Maternity Nightwear;Straight Cotton Kurti;Silver Necklace Set" | split: ";"
+              assign dprices = "799;1199;699;1499;499;899;649;1299" | split: ";"
+              assign dcompare = "1499;1999;999;2499;899;1499;1199;2199" | split: ";"
+            -%}
+            <div class="product-grid">
+              {%- for i in (1..8) -%}
+                {%- assign idx = forloop.index0 | modulo: 8 -%}
+                <div class="pcard">
+                  <a class="pcard__media" href="{{ routes.all_products_collection_url }}"><span class="pcard__badge">Sample</span>{{ 'product-apparel-3' | placeholder_svg_tag }}</a>
+                  <div><h3 class="pcard__title">{{ dnames[idx] }}</h3><span class="price price--sale"><span class="price__current">₹{{ dprices[idx] }}</span><span class="price__compare">₹{{ dcompare[idx] }}</span></span></div>
+                </div>
+              {%- endfor -%}
             </div>
+            <p style="text-align:center;opacity:.6;margin-top:20px;font-size:.85rem">Sample products — your real items appear here automatically once added.</p>
           {%- endif -%}
         </div>
       </div>
