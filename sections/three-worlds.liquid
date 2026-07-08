@@ -15,6 +15,7 @@
               assign accent = 'var(--color-brand)'
           endcase
         -%}
+        {%- assign wcoll = collections[block.settings.collection] -%}
         <div class="world" style="--world-accent: {{ accent }}" {{ block.shopify_attributes }}>
           <div class="world__media">
             {%- if block.settings.image != blank -%}
@@ -23,6 +24,9 @@
                    width="{{ block.settings.image.width }}"
                    height="{{ block.settings.image.height }}"
                    loading="lazy">
+            {%- elsif wcoll.featured_image != blank -%}
+              <img src="{{ wcoll.featured_image | image_url: width: 800 }}"
+                   alt="{{ block.settings.title | escape }}" loading="lazy">
             {%- else -%}
               {{ 'collection-apparel-1' | placeholder_svg_tag }}
             {%- endif -%}
@@ -49,7 +53,8 @@
       "type": "world",
       "name": "World card",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "collection", "id": "collection", "label": "Collection (image fallback)" },
+        { "type": "image_picker", "id": "image", "label": "Image override" },
         { "type": "text", "id": "title", "label": "Title", "default": "Mom" },
         { "type": "text", "id": "text", "label": "Text", "default": "Feeding-friendly and maternity wear designed for comfort." },
         { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },

@@ -59,6 +59,7 @@
         "mom": {
           "type": "world",
           "settings": {
+            "collection": "mom",
             "title": "Mom",
             "text": "Maternity dresses, feeding wear and nursing bras designed for comfort.",
             "button_label": "Shop Mom",
@@ -69,6 +70,7 @@
         "women": {
           "type": "world",
           "settings": {
+            "collection": "women",
             "title": "Women",
             "text": "Kurtis and kurta sets — elegant ethnic wear for every day.",
             "button_label": "Shop Women",
@@ -79,6 +81,7 @@
         "jewel": {
           "type": "world",
           "settings": {
+            "collection": "jewellery",
             "title": "Jewellery",
             "text": "Silver earrings, necklaces, bangles and rings that go with everything.",
             "button_label": "Shop Jewellery",
@@ -102,6 +105,7 @@
         "c1": {
           "type": "tile",
           "settings": {
+            "collection": "maternity-dresses",
             "label": "Maternity Dresses",
             "link": "/collections/maternity-dresses"
           }
@@ -109,6 +113,7 @@
         "c2": {
           "type": "tile",
           "settings": {
+            "collection": "feeding-dresses",
             "label": "Feeding Dresses",
             "link": "/collections/feeding-dresses"
           }
@@ -116,6 +121,7 @@
         "c3": {
           "type": "tile",
           "settings": {
+            "collection": "nursing-bras",
             "label": "Nursing Bras",
             "link": "/collections/nursing-bras"
           }
@@ -123,6 +129,7 @@
         "c4": {
           "type": "tile",
           "settings": {
+            "collection": "maternity-nightwear",
             "label": "Maternity Nightwear",
             "link": "/collections/maternity-nightwear"
           }
@@ -130,6 +137,7 @@
         "c5": {
           "type": "tile",
           "settings": {
+            "collection": "kurtis",
             "label": "Kurtis",
             "link": "/collections/kurtis"
           }
@@ -137,6 +145,7 @@
         "c6": {
           "type": "tile",
           "settings": {
+            "collection": "kurta-sets",
             "label": "Kurta Sets",
             "link": "/collections/kurta-sets"
           }
@@ -144,6 +153,7 @@
         "c7": {
           "type": "tile",
           "settings": {
+            "collection": "earrings",
             "label": "Earrings",
             "link": "/collections/earrings"
           }
@@ -151,6 +161,7 @@
         "c8": {
           "type": "tile",
           "settings": {
+            "collection": "necklaces",
             "label": "Necklaces",
             "link": "/collections/necklaces"
           }
@@ -158,6 +169,7 @@
         "c9": {
           "type": "tile",
           "settings": {
+            "collection": "bangles",
             "label": "Bangles",
             "link": "/collections/bangles"
           }
@@ -165,6 +177,7 @@
         "c10": {
           "type": "tile",
           "settings": {
+            "collection": "rings",
             "label": "Rings",
             "link": "/collections/rings"
           }
