@@ -15,7 +15,7 @@
               assign accent = 'var(--color-brand)'
           endcase
         -%}
-        {%- assign wcoll = collections[block.settings.collection] -%}
+        {%- assign wcoll = block.settings.collection -%}
         <div class="world" style="--world-accent: {{ accent }}" {{ block.shopify_attributes }}>
           <div class="world__media">
             {%- if block.settings.image != blank -%}

@@ -5,7 +5,7 @@
     </div>
     <div class="cats">
       {%- for block in section.blocks -%}
-        {%- assign coll = collections[block.settings.collection] -%}
+        {%- assign coll = block.settings.collection -%}
         <a href="{{ coll.url | default: block.settings.link | default: '#' }}" class="cat" {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
             <img src="{{ block.settings.image | image_url: width: 600 }}"
