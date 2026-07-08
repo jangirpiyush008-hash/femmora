@@ -12,14 +12,19 @@
           <div class="slide__ph" style="--i: {{ forloop.index0 }}"></div>
         {%- endif -%}
         <div class="slide__overlay" style="opacity: {{ block.settings.overlay | divided_by: 100.0 }}"></div>
+        {%- if block.settings.link != blank -%}
+          <a class="slide__link" href="{{ block.settings.link }}" aria-label="{{ block.settings.button_label | default: block.settings.heading | default: 'Shop' | escape }}"></a>
+        {%- endif -%}
+        {%- if block.settings.heading != blank or block.settings.button_label != blank -%}
         <div class="slide__content page-width" style="text-align: {{ block.settings.align }}">
           {%- if block.settings.eyebrow != blank -%}<span class="slide__eyebrow">{{ block.settings.eyebrow }}</span>{%- endif -%}
-          <h2 class="slide__title">{{ block.settings.heading }}</h2>
+          {%- if block.settings.heading != blank -%}<h2 class="slide__title">{{ block.settings.heading }}</h2>{%- endif -%}
           {%- if block.settings.subtext != blank -%}<p class="slide__text">{{ block.settings.subtext }}</p>{%- endif -%}
           {%- if block.settings.button_label != blank -%}
-            <a href="{{ block.settings.link | default: routes.all_products_collection_url }}" class="btn btn--ghost-light">{{ block.settings.button_label }}</a>
+            <a href="{{ block.settings.link | default: routes.all_products_collection_url }}" class="btn btn--primary" style="position:relative;z-index:3">{{ block.settings.button_label }}</a>
           {%- endif -%}
         </div>
+        {%- endif -%}
       </div>
     {%- endfor -%}
   </div>

@@ -10,36 +10,37 @@
         "s1": {
           "type": "slide",
           "settings": {
-            "eyebrow": "Femorra",
-            "heading": "New arrivals",
-            "subtext": "Maternity & feeding wear, ethnic kurtis and silver jewellery — made for you.",
-            "button_label": "Shop now",
+            "image": "shopify://shop_images/femorra-hero-women.jpg",
+            "heading": "",
+            "subtext": "",
+            "button_label": "",
+            "link": "/collections/women",
             "align": "center",
-            "overlay": 25
+            "overlay": 0
           }
         },
         "s2": {
           "type": "slide",
           "settings": {
-            "eyebrow": "For every mom",
-            "heading": "Comfort meets style",
-            "subtext": "Feeding-friendly kurtis, dresses and nursing bras designed for real life.",
-            "button_label": "Shop Mom",
+            "image": "shopify://shop_images/femorra-hero-mom.jpg",
+            "heading": "",
+            "subtext": "",
+            "button_label": "",
             "link": "/collections/mom",
             "align": "center",
-            "overlay": 25
+            "overlay": 0
           }
         },
         "s3": {
           "type": "slide",
           "settings": {
-            "eyebrow": "Finishing touch",
-            "heading": "Silver jewellery",
-            "subtext": "Everyday elegance that pairs with everything you own.",
-            "button_label": "Shop Jewellery",
+            "image": "shopify://shop_images/femorra-hero-jewellery.jpg",
+            "heading": "",
+            "subtext": "",
+            "button_label": "",
             "link": "/collections/jewellery",
             "align": "center",
-            "overlay": 25
+            "overlay": 0
           }
         }
       },
